@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AIForge — Build Smarter. Earn More.</title>
+
+    <meta name="description"
+          content="AIForge helps creators, entrepreneurs and businesses discover AI tools and build smarter workflows.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, Arial, sans-serif;
+            background: #070b14;
+            color: #f5f7ff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(7, 11, 20, 0.75);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #7c5cff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #b7bfd4;
+            font-size: 14px;
+            transition: .3s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-button {
+            background: #7c5cff;
+            padding: 11px 19px;
+            border-radius: 10px;
+            font-weight: 700;
+            color: white !important;
+        }
+
+        .menu {
+            display: none;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 100vh;
+            padding: 160px 25px 100px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 950px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid rgba(124,92,255,.4);
+            border-radius: 50px;
+            color: #bcaeff;
+            background: rgba(124,92,255,.1);
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: clamp(48px, 8vw, 90px);
+            line-height: .98;
+            letter-spacing: -5px;
+            margin-bottom: 25px;
+        }
+
+        h1 span {
+            background: linear-gradient(90deg, #8c6cff, #39d9ff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: #a8b0c5;
+            font-size: 19px;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-weight: 800;
+            border: none;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .primary-btn {
+            background: #7c5cff;
+            color: white;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(124,92,255,.3);
+        }
+
+        .secondary-btn {
+            background: rgba(255,255,255,.06);
+            color: white;
+            border: 1px solid rgba(255,255,255,.1);
+        }
+
+        .secondary-btn:hover {
+            background: rgba(255,255,255,.1);
+        }
+
+        .glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: #5637ff;
+            filter: blur(180px);
+            opacity: .18;
+            border-radius: 50%;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* ================= STATS ================= */
+
+        .stats {
+            max-width: 1100px;
+            margin: -30px auto 100px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            background: rgba(255,255,255,.04);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 20px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat h2 {
+            font-size: 35px;
+        }
+
+        .stat p {
+            color: #8d96ad;
+            font-size: 14px;
+        }
+
+        /* ================= SECTIONS ================= */
+
+        section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 90px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title small {
+            color: #8c75ff;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(32px,5vw,55px);
+            letter-spacing: -2px;
+            margin: 10px 0;
+        }
+
+        .section-title p {
+            color: #929bb0;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* ================= SEARCH ================= */
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 17px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,.1);
+            background: #101625;
+            color: white;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: #7c5cff;
+        }
+
+        /* ================= CARDS ================= */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: linear-gradient(
+                145deg,
+                rgba(255,255,255,.07),
+                rgba(255,255,255,.025)
+            );
+            border: 1px solid rgba(255,255,255,.08);
+            padding: 28px;
+            border-radius: 20px;
+            transition: .3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(124,92,255,.5);
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 13px;
+            display: grid;
+            place-items: center;
+            background: rgba(124,92,255,.15);
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #9099ad;
+            font-size: 14px;
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 22px;
+            align-items: center;
+        }
+
+        .tag {
+            font-size: 12px;
+            padding: 6px 10px;
+            background: rgba(124,92,255,.13);
+            color: #b9adff;
+            border-radius: 20px;
+        }
+
+        /* ================= FEATURES ================= */
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .feature {
+            padding: 35px;
+            border-radius: 20px;
+            background: #0d1321;
+            border: 1px solid rgba(255,255,255,.07);
+        }
+
+        .feature-number {
+            font-size: 13px;
+            color: #7c5cff;
+            font-weight: bold;
+        }
+
+        .feature h3 {
+            font-size: 25px;
+            margin: 12px 0;
+        }
+
+        .feature p {
+            color: #8e97ab;
+        }
+
+        /* ================= PRICING ================= */
+
+        .pricing {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+
+        .price-card {
+            padding: 35px;
+            background: #0d1321;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 20px;
+        }
+
+        .price-card.featured {
+            border-color: #7c5cff;
+            transform: scale(1.03);
+            box-shadow: 0 20px 60px rgba(124,92,255,.12);
+        }
+
+        .price {
+            font-size: 45px;
+            font-weight: 900;
+            margin: 15px 0;
+        }
+
+        .price span {
+            font-size: 14px;
+            color: #858da1;
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .price-card li {
+            padding: 9px 0;
+            color: #9ca5b9;
+        }
+
+        .price-card li::before {
+            content: "✓ ";
+            color: #7c5cff;
+            font-weight: bold;
+        }
+
+        /* ================= TESTIMONIALS ================= */
+
+        .testimonial {
+            padding: 30px;
+            background: #0d1321;
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 20px;
+        }
+
+        .testimonial p {
+            color: #a4acc0;
+            margin-bottom: 20px;
+        }
+
+        .person {
+            font-weight: 800;
+        }
+
+        .person small {
+            display: block;
+            color: #777f94;
+            font-weight: normal;
+        }
+
+        /* ================= FAQ ================= */
+
+        .faq {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        details {
+            background: #0d1321;
+            margin-bottom: 12px;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,.07);
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        details p {
+            color: #929bae;
+            margin-top: 15px;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta {
+            margin: 60px auto;
+            max-width: 1100px;
+            text-align: center;
+            padding: 80px 30px;
+            border-radius: 30px;
+            background:
+                radial-gradient(circle at center,
+                rgba(124,92,255,.25),
+                transparent 55%),
+                #0d1321;
+            border: 1px solid rgba(255,255,255,.08);
+        }
+
+        .cta h2 {
+            font-size: clamp(35px,6vw,65px);
+            letter-spacing: -3px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #929bae;
+            margin-bottom: 30px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,.07);
+            padding: 50px 25px;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        footer p {
+            color: #737c91;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+            color: #8d95a8;
+            font-size: 14px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width:850px) {
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: #090e19;
+                padding: 25px;
+                flex-direction: column;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu {
+                display: block;
+            }
+
+            .stats,
+            .cards,
+            .pricing {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media(max-width:600px) {
+
+            .stats,
+            .cards,
+            .pricing {
+                grid-template-columns: 1fr;
+            }
+
+            .price-card.featured {
+                transform: none;
+            }
+
+            .footer-container {
+                flex-direction: column;
+            }
+
+            h1 {
+                letter-spacing: -3px;
+            }
+        }
+
+        /* ================= ANIMATION ================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: .7s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+    <div class="nav-container">
+
+        <div class="logo">
+            AI<span>Forge</span>
+        </div>
+
+        <div class="menu" onclick="toggleMenu()">☰</div>
+
+        <div class="nav-links" id="navLinks">
+            <a href="#tools">AI Tools</a>
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#faq">FAQ</a>
+            <a href="#pricing" class="nav-button">Get Started</a>
+        </div>
+
+    </div>
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+    <div class="glow"></div>
+
+    <div class="hero-content">
+
+        <div class="badge">
+            ⚡ The AI Operating System for Ambitious People
+        </div>
+
+        <h1>
+            Work smarter.<br>
+            <span>Build bigger.</span>
+        </h1>
+
+        <p>
+            Discover powerful AI tools, automate repetitive work,
+            and build systems that help you save time and grow faster.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#tools" class="primary-btn">
+                Explore AI Tools →
+            </a>
+
+            <a href="#pricing" class="secondary-btn">
+                View Plans
+            </a>
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- STATS -->
+
+<div class="stats reveal">
+
+    <div class="stat">
+        <h2 class="counter" data-target="250">0</h2>
+        <p>AI Tools</p>
+    </div>
+
+    <div class="stat">
+        <h2><span class="counter" data-target="98">0</span>%</h2>
+        <p>User Satisfaction</p>
+    </div>
+
+    <div class="stat">
+        <h2 class="counter" data-target="50">0</h2>
+        <p>Workflows</p>
+    </div>
+
+    <div class="stat">
+        <h2>24/7</h2>
+        <p>AI Productivity</p>
+    </div>
+
+</div>
+
+
+<!-- TOOLS -->
+
+<section id="tools">
+
+    <div class="section-title reveal">
+
+        <small>AI Directory</small>
+
+        <h2>Find the right AI tool.</h2>
+
+        <p>
+            Discover tools that can help with writing, coding,
+            marketing, design, research and business.
+        </p>
+
+    </div>
+
+    <div class="search-box reveal">
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Search AI tools..."
+            onkeyup="searchTools()"
+        >
+
+    </div>
+
+    <div class="cards" id="toolCards">
+
+        <div class="card reveal" data-name="copygen writing content">
+            <div class="icon">✍️</div>
+            <h3>CopyGen</h3>
+            <p>
+                Generate marketing copy, blog posts,
+                emails and social media content.
+            </p>
+
+            <div class="card-bottom">
+                <span class="tag">Writing</span>
+                <b>Explore →</b>
+            </div>
+        </div>
+
+
+        <div class="card reveal" data-name="codepilot coding developer">
+            <div class="icon">💻</div>
+            <h3>CodePilot</h3>
+            <p>
+                Accelerate development with AI-powered
+                coding assistance.
+            </p>
+
+            <div class="card-bottom">
+                <span class="tag">Coding</span>
+                <b>Explore →</b>
+            </div>
+        </div>
+
+
+        <div class="card reveal" data-name="designai design image">
+            <div class="icon">🎨</div>
+            <h3>DesignAI</h3>
+            <p>
+                Create professional visual concepts,
+                graphics and creative assets.
+            </p>
+
+            <div class="card-bottom">
+                <span class="tag">Design</span>
+                <b>Explore →</b>
+            </div>
+        </div>
+
+
+        <div class="card reveal" data-name="researchbot research">
+            <div class="icon">🔎</div>
+            <h3>ResearchBot</h3>
+            <p>
+                Research topics quickly and organize
+                information into useful insights.
+            </p>
+
+            <div class="card-bottom">
+                <span class="tag">Research</span>
+                <b>Explore →</b>
+            </div>
+        </div>
+
+
+        <div class="card reveal" data-name="marketmind marketing">
+            <div class="icon">📈</div>
+            <h3>MarketMind</h3>
+            <p>
+                Analyze markets, customers and marketing
+                opportunities.
+            </p>
+
+            <div class="card-bottom">
+                <span class="tag">Marketing</span>
+                <b>Explore →</b>
+            </div>
+        </div>
+
+
+        <div class="card reveal" data-name="businessai business">
+            <div class="icon">🚀</div>
+            <h3>BusinessAI</h3>
+            <p>
+                Build smarter business workflows and
+                automate repetitive tasks.
+            </p>
+
+            <div class="card-bottom">
+                <span class="tag">Business</span>
+                <b>Explore →</b>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section id="features">
+
+    <div class="section-title reveal">
+
+        <small>Why AIForge</small>
+
+        <h2>More than a directory.</h2>
+
+        <p>
+            Turn AI from a collection of tools into a
+            complete productivity system.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature reveal">
+
+            <span class="feature-number">01 — DISCOVER</span>
+
+            <h3>Find powerful tools</h3>
+
+            <p>
+                Search and discover AI software based on
+                your specific needs instead of wasting hours
+                browsing random websites.
+            </p>
+
+        </div>
+
+
+        <div class="feature reveal">
+
+            <span class="feature-number">02 — LEARN</span>
+
+            <h3>Learn from experts</h3>
+
+            <p>
+                Access guides, tutorials and workflows designed
+                to help you get useful results from AI.
+            </p>
+
+        </div>
+
+
+        <div class="feature reveal">
+
+            <span class="feature-number">03 — AUTOMATE</span>
+
+            <h3>Build workflows</h3>
+
+            <p>
+                Connect your favorite tools and create repeatable
+                systems for content, marketing and business.
+            </p>
+
+        </div>
+
+
+        <div class="feature reveal">
+
+            <span class="feature-number">04 — GROW</span>
+
+            <h3>Turn time into money</h3>
+
+            <p>
+                Reduce repetitive work so you can focus on
+                high-value activities and business growth.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRICING -->
+
+<section id="pricing">
+
+    <div class="section-title reveal">
+
+        <small>Pricing</small>
+
+        <h2>Start free. Scale when ready.</h2>
+
+        <p>
+            Choose the plan that fits your workflow.
+        </p>
+
+    </div>
+
+
+    <div class="pricing">
+
+        <div class="price-card reveal">
+
+            <h3>Free</h3>
+
+            <div class="price">
+                ₹0 <span>/month</span>
+            </div>
+
+            <ul>
+                <li>AI tool directory</li>
+                <li>Basic search</li>
+                <li>5 saved tools</li>
+                <li>Community access</li>
+            </ul>
+
+            <button class="secondary-btn" onclick="choosePlan('Free')">
+                Start Free
+            </button>
+
+        </div>
+
+
+        <div class="price-card featured reveal">
+
+            <div class="tag">MOST POPULAR</div>
+
+            <h3>Pro</h3>
+
+            <div class="price">
+                ₹999 <span>/month</span>
+            </div>
+
+            <ul>
+                <li>Everything in Free</li>
+                <li>Unlimited saved tools</li>
+                <li>Premium workflows</li>
+                <li>AI productivity guides</li>
+                <li>Priority support</li>
+            </ul>
+
+            <button class="primary-btn" onclick="choosePlan('Pro')">
+                Start Pro
+            </button>
+
+        </div>
+
+
+        <div class="price-card reveal">
+
+            <h3>Business</h3>
+
+            <div class="price">
+                ₹4,999 <span>/month</span>
+            </div>
+
+            <ul>
+                <li>Everything in Pro</li>
+                <li>Team accounts</li>
+                <li>Advanced workflows</li>
+                <li>Business automation</li>
+                <li>Dedicated support</li>
+            </ul>
+
+            <button class="secondary-btn"
+                    onclick="choosePlan('Business')">
+                Contact Sales
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- TESTIMONIALS -->
+
+<section>
+
+    <div class="section-title reveal">
+
+        <small>Testimonials</small>
+
+        <h2>People are building faster.</h2>
+
+    </div>
+
+
+    <div class="cards">
+
+        <div class="testimonial reveal">
+
+            <p>
+                "AIForge helped me discover tools that reduced
+                several hours of repetitive work every week."
+            </p>
+
+            <div class="person">
+                Arjun Mehta
+                <small>Founder</small>
+            </div>
+
+        </div>
+
+
+        <div class="testimonial reveal">
+
+            <p>
+                "The workflow guides are incredibly useful.
+                I went from experimenting with AI to actually
+                using it in my business."
+            </p>
+
+            <div class="person">
+                Sarah Williams
+                <small>Marketing Manager</small>
+            </div>
+
+        </div>
+
+
+        <div class="testimonial reveal">
+
+            <p>
+                "A clean way to discover useful AI products
+                without getting lost in thousands of options."
+            </p>
+
+            <div class="person">
+                David Chen
+                <small>Developer</small>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FAQ -->
+
+<section id="faq">
+
+    <div class="section-title reveal">
+
+        <small>FAQ</small>
+
+        <h2>Questions, answered.</h2>
+
+    </div>
+
+
+    <div class="faq">
+
+        <details>
+            <summary>What is AIForge?</summary>
+
+            <p>
+                AIForge is a platform for discovering AI tools,
+                learning AI workflows and improving productivity.
+            </p>
+        </details>
+
+
+        <details>
+            <summary>Is there a free plan?</summary>
+
+            <p>
+                Yes. Users can start with the free plan and
+                upgrade when they need premium features.
+            </p>
+        </details>
+
+
+        <details>
+            <summary>Can businesses use AIForge?</summary>
+
+            <p>
+                Yes. The Business plan is designed for teams
+                that want to integrate AI into their workflows.
+            </p>
+        </details>
+
+
+        <details>
+            <summary>Can I submit my own AI tool?</summary>
+
+            <p>
+                Yes. A future version of the platform can include
+                paid tool listings and sponsored placements.
+            </p>
+        </details>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<div class="cta reveal">
+
+    <h2>Ready to work smarter?</h2>
+
+    <p>
+        Join the next generation of AI-powered creators
+        and businesses.
+    </p>
+
+    <button class="primary-btn" onclick="joinNow()">
+        Join AIForge →
+    </button>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-container">
+
+        <div>
+            <div class="logo">AI<span>Forge</span></div>
+
+            <p>
+                Build smarter. Earn more.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <a href="#tools">Tools</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#faq">FAQ</a>
+            <a href="#">Privacy</a>
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+    /* MOBILE MENU */
+
+    function toggleMenu() {
+
+        document
+            .getElementById("navLinks")
+            .classList.toggle("active");
+
+    }
+
+
+    /* SEARCH */
+
+    function searchTools() {
+
+        const input =
+            document
+                .getElementById("search")
+                .value
+                .toLowerCase();
+
+        const cards =
+            document.querySelectorAll(".card");
+
+        cards.forEach(card => {
+
+            const name =
+                card.dataset.name.toLowerCase();
+
+            card.style.display =
+                name.includes(input)
+                    ? "block"
+                    : "none";
+
+        });
+
+    }
+
+
+    /* PRICING */
+
+    function choosePlan(plan) {
+
+        alert(
+            "You selected the " +
+            plan +
+            " plan.\n\nPayment integration can be connected here."
+        );
+
+    }
+
+
+    /* JOIN */
+
+    function joinNow() {
+
+        alert(
+            "Welcome to AIForge 🚀\n\n" +
+            "Connect this button to your signup system."
+        );
+
+    }
+
+
+    /* COUNTERS */
+
+    const counters =
+        document.querySelectorAll(".counter");
+
+    counters.forEach(counter => {
+
+        const target =
+            Number(counter.dataset.target);
+
+        let current = 0;
+
+        const update = () => {
+
+            const increment =
+                Math.ceil(target / 80);
+
+            current += increment;
+
+            if (current >= target) {
+                current = target;
+            }
+
+            counter.innerText = current;
+
+            if (current < target) {
+                requestAnimationFrame(update);
+            }
+
+        };
+
+        update();
+
+    });
+
+
+    /* SCROLL REVEAL */
+
+    const observer =
+        new IntersectionObserver(entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("show");
+
+                }
+
+            });
+
+        }, {
+            threshold: .12
+        });
+
+
+    document
+        .querySelectorAll(".reveal")
+        .forEach(el => observer.observe(el));
+
+</script>
+
+</body>
+</html>
